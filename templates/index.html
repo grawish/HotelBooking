@@ -1,0 +1,223 @@
+{% extends "basic.html" %}
+{% load custom_filter %}
+{% load static %}
+{% block title %}
+    Hotel Zakardo
+{% endblock %}
+{% block head %}
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html,
+        body,
+        header,
+        .view.jarallax {
+            height: 100%;
+            min-height: 100%;
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+
+    <!--Navigation & Intro-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto smooth-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about" data-offset="100">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#room" data-offset="100">Rooms</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#facilities" data-offset="100">Facilities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#offers" data-offset="100">Top offers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#reservation" data-offset="100">Reservation</a>
+                        </li>
+                    </ul>
+                    <!-- Social Icon  -->
+                    <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Intro Section -->
+        <div id="home" class="view jarallax" data-jarallax='{"speed": 0.2}' max-height="700px"
+             style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img (29).jpg');">
+            <div class="mask  rgba-black-slight">
+                <div class="container h-100 d-flex justify-content-center align-items-center">
+                    <div class="row smooth-scroll">
+                        <div class="col-md-12 text-center white-text">
+                            <div class="wow fadeInDown" data-wow-delay="0.2s">
+                                <h1 class="white-text display-4 font-weight-bold mt-5 mt-xl-2">
+                                    <em>Welcome to our
+                                        <strong>Hotel</strong>
+                                    </em>
+                                </h1>
+
+                                <!--Rating-->
+                                <ul class="rating mt-3">
+                                    <li>
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-star"></i>
+                                    </li>
+                                </ul>
+
+                                <h4 class="text-uppercase white-text mb-5 mt-3 font-weight-bold spacing">Feel like at
+                                    home</h4>
+
+                                <a href="#rooms"
+                                   class="btn btn-white dark-grey-text font-weight-bold btn-rounded spacing"
+                                   data-offset="100">
+                                    <strong>reservation</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Intro Section -->
+
+    </header>
+    <!--/Navigation & Intro-->
+
+    <form action="/booker/query/" method="post">{% csrf_token %}
+        <div class="row mt-5 p-5" id="filter">
+            <div class="col-md-10 offset-1">
+                <div class="row">
+                    <div align="center" class="col-md-3 form-group">
+                        <label for="checkin">Check In Date</label>
+                        <input id="checkin" min="{% now 'Y-m-d' %}" type="date"
+                               class="form-control" name="checkin" required/>
+                    </div>
+                    <div align="center" class="col-md-3 form-group">
+                        <label for="checkout">Check Out Date</label>
+                        <input type="date" min="{% now 'Y-m-d' %}" class="form-control" id="checkout"
+                               name="checkout" required/>
+                    </div>
+                    <div align="center" class="col-md-3">
+                        <label for="adult">Adults</label>
+                        <select id="adult" class="form-control form-control" name="adults">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                        </select>
+                    </div>
+                    <div align="center" class="col-md-3">
+                        <label for="children">Children</label>
+                        <select id="children" class="form-control form-control" name="children">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col d-flex justify-content-center">
+                        <button class="btn btn-outline-blue" type="submit">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row my-5">
+        <div class="col-md-4">
+            <div class="card mt-2" style="width: 100%;">
+                <img src="{% static 'images/l.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Affordable Rooms</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mt-2" style="width: 100%;">
+                <img src="{% static 'images/m.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Beautiful Affordable rooms</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mt-2" style="width: 100%;">
+                <img src="{% static 'images/h.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">High End Rooms</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+{% block js %}
+    <script>
+        // Animation init
+        new WOW().init();
+
+    </script>
+{% endblock %}

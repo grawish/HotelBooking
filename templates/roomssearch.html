@@ -1,0 +1,218 @@
+{% extends "basic.html" %}
+{% block title %}
+    Rooms
+{% endblock %}
+{% block head %}
+    <style>
+        .card-body {
+            border-bottom-left-radius: inherit !important;
+            border-bottom-right-radius: inherit !important;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <form action="/booker/query/" method="post">{% csrf_token %}
+        <div class="row mt-5 p-5" id="filter">
+            <div class="col-md-10 offset-1">
+                <div class="row">
+                    <div align="center" class="col-md-3 form-group">
+                        <label for="checkin">Check In Date</label>
+                        <input id="checkin" min="{% now "Y-m-d" %}" type="date" class="form-control" name="checkin"/>
+                    </div>
+                    <div align="center" class="col-md-3 form-group">
+                        <label for="checkout">Check In Date</label>
+                        <input type="date" min="{% now "Y-m-d" %}" class="form-control" id="checkout" name="checkout"/>
+                    </div>
+                    <div align="center" class="col-md-3">
+                        <label for="adult">Adults</label>
+                        <select id="adult" class="form-control form-control" name="adults">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                        </select>
+                    </div>
+                    <div align="center" class="col-md-3">
+                        <label for="children">Children</label>
+                        <select id="children" class="form-control form-control" name="children">
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col d-flex justify-content-center">
+                        <button class="btn btn-outline-blue" type="submit">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr>
+
+    <div class="container mt-5">
+
+        <!--Section: Content-->
+        <section class="dark-grey-text text-center">
+
+            <!-- Section heading -->
+            <h3 class="font-weight-bold mb-4 pb-2">Our bestsellers</h3>
+            <!-- Section description -->
+            <p class="grey-text w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                fugit, error amet numquam iure provident voluptate esse quasi nostrum quisquam eum porro a pariatur
+                veniam.</p>
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <!-- Card -->
+                    <div class="card card-cascade wider card-ecommerce">
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay">
+                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img (55).jpg"
+                                 class="card-img-top"
+                                 alt="sample photo">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!-- Card image -->
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center pb-0">
+                            <!-- Title -->
+                            <h5 class="card-title">
+                                <strong>
+                                    <a href="">GoPro</a>
+                                </strong>
+                            </h5>
+                            <!-- Description -->
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing minima veniam
+                                elit.</p>
+                            <!-- Card footer -->
+                            <div class="card-footer mt-4">
+                                <p class="float-left font-weight-bold mb-1 pb-2">1439$</p>
+                                <a class="float-right material-tooltip-main" data-toggle="tooltip" data-placement="top"
+                                   title="Add to Wishlist">
+                                    <i class="fas fa-heart grey-text ml-3"></i>
+                                </a>
+                                <a class="float-right material-tooltip-main" data-toggle="tooltip" data-placement="top"
+                                   title="Quick Look">
+                                    <i class="fas fa-eye grey-text ml-3"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Card content -->
+                    </div>
+                    <!-- Card -->
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <!-- Card -->
+                    <div class="card card-cascade wider card-ecommerce">
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay">
+                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(49).jpg"
+                                 class="card-img-top"
+                                 alt="sample photo">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!-- Card image -->
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center pb-0">
+                            <!-- Title -->
+                            <h5 class="card-title">
+                                <strong>
+                                    <a href="">Camera</a>
+                                </strong>
+                            </h5>
+                            <!-- Description -->
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing minima veniam
+                                elit.</p>
+                            <!-- Card footer -->
+                            <div class="card-footer mt-4">
+                                <p class="float-left font-weight-bold mb-1 pb-2">1160$</p>
+                                <a class="float-right material-tooltip-main" data-toggle="tooltip" data-placement="top"
+                                   title="Add to Wishlist">
+                                    <i class="fas fa-heart grey-text ml-3"></i>
+                                </a>
+                                <a class="float-right material-tooltip-main" data-toggle="tooltip" data-placement="top"
+                                   title="Quick Look">
+                                    <i class="fas fa-eye grey-text ml-3"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Card content -->
+                    </div>
+                    <!-- Card -->
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <!-- Card -->
+                    <div class="card card-cascade wider card-ecommerce">
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay">
+                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img (56).jpg"
+                                 class="card-img-top"
+                                 alt="sample photo">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!-- Card image -->
+                        <!-- Card content -->
+                        <div class="card-body card-body-cascade text-center pb-0">
+                            <!-- Title -->
+                            <h5 class="card-title">
+                                <strong>
+                                    <a href="">iPhone 6S</a>
+                                </strong>
+                            </h5>
+                            <!-- Description -->
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing minima veniam
+                                elit.</p>
+                            <!-- Card footer -->
+                            <div class="card-footer mt-4">
+                                <p class="float-left font-weight-bold mb-1 pb-2">2079$</p>
+                                <a class="float-right material-tooltip-main" data-toggle="tooltip" data-placement="top"
+                                   title="Add to Wishlist">
+                                    <i class="fas fa-heart grey-text ml-3"></i>
+                                </a>
+                                <a class="float-right material-tooltip-main" data-toggle="tooltip" data-placement="top"
+                                   title="Quick Look">
+                                    <i class="fas fa-eye grey-text ml-3"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Card content -->
+                    </div>
+                    <!-- Card -->
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </section>
+        <!--Section: Content-->
+
+
+    </div>
+    <script>
+        $(function () {
+            $('.material-tooltip-main').tooltip({
+                template: '<div class="tooltip md-tooltip"><div class="tooltip-arrow md-arrow"></div><div class="tooltip-inner md-inner"></div></div>'
+            });
+        })
+
+    </script>
+{% endblock %}

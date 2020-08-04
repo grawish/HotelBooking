@@ -1,0 +1,251 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block head %}
+
+    {% endblock %}
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("signupform").submit();
+        }
+
+    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}
+
+    {% endblock %}</title>
+</head>
+<body>
+{#<nav class="navbar navbar-expand-lg navbar-light bg-light">#}
+{#    <a class="navbar-brand" href="#">Navbar</a>#}
+{#    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"#}
+{#            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
+{#        <span class="navbar-toggler-icon"></span>#}
+{#    </button>#}
+{##}
+{#    <div class="collapse navbar-collapse" id="navbarSupportedContent">#}
+{#        <ul class="navbar-nav mr-auto">#}
+{#            <li class="nav-item active">#}
+{#                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">Hotels</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">About Us</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">Contact Us</a>#}
+{#            </li>#}
+{##}
+{#        </ul>#}
+{#        {% if not user.is_authenticated %}#}
+{#            <button class="btn btn-success ml-2" data-toggle="modal" data-target="#signupmodal">Sign Up</button>#}
+{#            <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#loginmodal">Login</button>#}
+{#        {% else %}#}
+{#            <a class="btn btn-primary ml-2" href="/logout/">Logout</a>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</nav>#}
+{#{% for message in messages %}#}
+{#    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">#}
+{#        <strong>message: </strong>{{ message }}#}
+{#        <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#            <span aria-hidden="true">&times;</span>#}
+{#        </button>#}
+{#    </div>#}
+{#{% endfor %}#}
+{#{% if not user.is_authenticated %}#}
+{##}
+{##}
+{#    <!--signup modal-->#}
+{#    <div class="modal fade" id="signupmodal" tabindex="-1" role="dialog">#}
+{#        <div class="modal-dialog">#}
+{#            <div class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <h5 class="modal-title">Sign Up</h5>#}
+{#                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#                        <span style="color: red;" aria-hidden="true">&times;</span>#}
+{#                    </button>#}
+{#                </div>#}
+{#                <form action="/signup/" id="signupform" method="post">{% csrf_token %}#}
+{#                    <div class="modal-body">#}
+{#                        <div class="form-group">#}
+{#                            <label for="fname" class="col-form-label">First Name</label>#}
+{#                            <input type="text" class="form-control" id="fname" name="fname"#}
+{#                                   placeholder="Tell us Your First name!" autocomplete="firstname" required>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="lname" class="col-form-label">Last Name</label>#}
+{#                            <input type="text" class="form-control" id="lname" name="lname"#}
+{#                                   placeholder="Tell us your Lastname!" autocomplete="lastname" required>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="email" class="col-form-label">Email Address</label>#}
+{#                            <input type="email" class="form-control" id="email" name="email"#}
+{#                                   placeholder="Make us Contact you!" autocomplete="email" required>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="pas" class="col-form-label">Password</label>#}
+{#                            <input type="password" class="form-control" id="pas" name="pas"#}
+{#                                   placeholder="Security is must! - (A-Z, a-z, 0-9, uniques)"#}
+{#                                   autocomplete="new-password"#}
+{#                                   required>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="modal-footer">#}
+{#                        <button type="submit" class="g-recaptcha btn btn-primary"#}
+{#                                data-sitekey="6LeA7aYZAAAAAGM9cop1J_Ilb_bmcHEIMHe7fTe8"#}
+{#                                data-callback='onSubmit'>Save changes#}
+{#                        </button>#}
+{#                    </div>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <!--Login modal-->#}
+{#    <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog">#}
+{#        <div class="modal-dialog">#}
+{#            <div class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <h5 class="modal-title">Login Here</h5>#}
+{#                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#                        <span style="color: red;" aria-hidden="true">&times;</span>#}
+{#                    </button>#}
+{#                </div>#}
+{#                <form action="/login/" id="loginForm" method="post">{% csrf_token %}#}
+{#                    <div class="modal-body">#}
+{#                        <div class="form-group">#}
+{#                            <label for="uname" class="col-form-label">Email</label>#}
+{#                            <input type="text" class="form-control" id="uname" name="uname"#}
+{#                                   placeholder="Enter your email id" autocomplete="username">#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="lpas" class="col-form-label">Password</label>#}
+{#                            <input type="password" class="form-control" id="loginpas" name="loginpas"#}
+{#                                   placeholder="Password!"#}
+{#                                   autocomplete="current-password">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="modal-footer">#}
+{#                        <button type="submit" class="btn btn-success">Login</button>#}
+{#                    </div>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#{% endif %}#}
+{% block body %}
+
+{% endblock %}
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-6 mt-md-0 mt-3">
+
+                <!-- Content -->
+                <h5 class="text-uppercase">Footer Content</h5>
+                <p>Here you can use rows and columns to organize your footer content.</p>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none pb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <!-- Links -->
+                <h5 class="text-uppercase">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <!-- Links -->
+                <h5 class="text-uppercase">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/reghotel/">Register Your Hotel</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+ <!-- jQuery -->
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  <!-- Your custom scripts (optional) -->
+  {% block js %}
+  
+  {% endblock %}
+
+</body>
+</html>
