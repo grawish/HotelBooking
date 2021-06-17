@@ -1,3 +1,3 @@
 # HotelBooking
 
-tryin to build htel management
+tryin to build hotel management
